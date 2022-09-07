@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'users.apps.UsersConfig',
+    'school_front.apps.SchoolFrontConfig',
 ]
 
 
