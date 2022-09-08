@@ -18,3 +18,11 @@ def all_templates_with_dir(request, template_dir, template_name):
 def all_templates_with_dir_dir(request, template_dir1, template_dir2, template_name):
     template_name = f"school_front/{template_dir1}/{template_dir2}/{template_name}"
     return render(request, template_name)
+
+def all_templates_with_dir_dir_dir(request, template_dir1,template_dir2,template_dir3, template_name):
+    template_name = f"school_front/{template_dir1}/{template_dir2}/{template_dir3}/{template_name}"
+    return render(request, template_name)
+
+def all_templates_with_dir_dir_dir_dir(request, template_dir1, template_dir2, template_dir3, template_dir4, template_name):
+    template_name = f"school_front/{template_dir1}/{template_dir2}/{template_dir3}/{template_dir4}/{template_name}"
+    return render(request, template_name)
