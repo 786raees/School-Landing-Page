@@ -1,1 +1,2 @@
-### This Project Completely Replicate Russian Schools
+### School Landing Page
+## This Project Completely Replicate Russian Schools
