@@ -143,3 +143,4 @@ LOGIN_REDIRECT_URL = '/admin'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CSRF_TRUSTED_ORIGINS = ["https://6775-62-171-147-13.eu.ngrok.io/"]
+CSRF_COOKIE_HTTPONLY = False
