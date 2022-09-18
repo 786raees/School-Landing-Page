@@ -91,19 +91,8 @@
                         <a href="/blog.html" class="navigationPrimaryItem">Blog</a>
                     </nav>
                     <nav class="navigationSecondary">
-                        <div class="navigationSecondaryItem is-dropdown">
-                                <div class="navDropdownHeading">
-                                    <a href="/locations.html">
-                                        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.12 21.12"><defs aria-hidden='true'><style>.b0efa9ad-8bc8-43f4-8084-c70c80017aa6{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.12px;}.fb934f9c-7e0e-490c-bcdc-f1ae394a2bee{fill:#fff;fill-rule:evenodd;}</style></defs><title>icon.marker</title><g id="b9a19e58-3ba3-443a-9f18-bdf3260ac01c" data-name="Group-2"><g id="b8d82b48-e09b-4d78-9707-8d2a86d75f81" data-name="Stacked-Group"><g id="a887f4e5-66d4-4cbb-8fce-2d5590bed2db" data-name="Location-Marker"><path id="f2e3b03a-fb89-42d7-9dce-3ec50195e8f6" data-name="Stroke-1" class="b0efa9ad-8bc8-43f4-8084-c70c80017aa6" d="M15,7.9C15,11.71,8,21,8,21S1,11.71,1,7.9A7,7,0,0,1,8,1,7,7,0,0,1,15,7.9Z" transform="translate(-0.44 -0.44)"/><path id="f2fefc71-3909-4cce-b1f5-1c113129f323" data-name="Fill-3" class="fb934f9c-7e0e-490c-bcdc-f1ae394a2bee" d="M10.8,7.9A2.8,2.8,0,1,1,8,5.14,2.78,2.78,0,0,1,10.8,7.9" transform="translate(-0.44 -0.44)"/></g></g></g></svg>
-
-                                        Find your School
-                                    </a>
-                                </div>
-                                <div class="navDropdownItems">
-                                                <a href="/locations.html" class="navDropdownItem">All locations</a>
-                                </div>
-                            </div>
-                        <a href="{% url 'account_login' %}" class="navigationSecondaryItem" target="_blank" rel="noreferrer">Parent Login</a>
+                        <a href="{% url 'account_login' %}" class="navigationSecondaryItem" rel="noreferrer">
+                        {% if request.user.is_authenticated %}{{request.user.username}}{% else %}Login{% endif %}</a>
                     </nav>
                 </div>
             </div>
@@ -123,8 +112,8 @@
         <div class="contain heroContent">
             <div class="heroContentText">
                                     <a href="#get-started-evaluation" class="scheduleEvalCta">SCHEDULE AN EVALUATION</a>
-                                <h2 class="heroTitle">Building Powerful Minds Through Mathematics</h2>
-                <h1 class="heroSubtitle">Our award winning K-12 after-school math program has empowered students to achieve excellence for over twenty years.</h1>
+                                <h2 class="heroTitle">{{page.main_heading}}</h2>
+                <h1 class="heroSubtitle">{{page.main_description}}</h1>
             </div>
         </div>
     </div>
@@ -165,43 +154,23 @@
     <section class="locations has-schoolFinder applySpace--bottom fadeUp">
     
      <div class="location is-highlighted ">
-        <h2 class="locationName">RSM Online</h2>
-        <a href="tel:(617) 362 3500" class="locationTel">(617) 362 3500</a>
-        <address>online.elementary@russianschool.com</address>
+        <h2 class="locationName">{{page.rsm_online}}</h2>
+        <a href="tel:{{page.rsm_phone}}" class="locationTel">{{page.rsm_phone}}</a>
+        <address>{{page.rsm_link}}</address>
         <span class="actionIcon"></span>
         <a href="locations/online.html" class="locationLink">RSM Online</a>
 
                 </div>
 
-                <div class="location is-no-locations">
-            <h2 class="locationName">No Locations Near You</h2>
-            <p>Check out our virtual classrooms through RSM-Online - our program and approach from the comfort of your home.</p>
-            <a href="locations.html" class="locationLink" aria-label="View all locations"></a>
-        </div>
-                
-
-        <div class="schoolFinder">
-        <div class="schoolFinderHeading">Find Your School</div>
-        <form action="https://www.russianschool.com/locations" method="get">
-            <div class="schoolFinderForm">
-                <input type="search" id="zip-search" placeholder="Enter Zip Code" name="zip">
-                <button type="submit">
-                    <span>Find Your School</span>
-                    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 7"><defs aria-hidden='true'><style>.a0997351-57ec-43e1-9fc6-5db7df61efb5{fill:#8BC540;fill-rule:evenodd;}</style></defs><title>icon.arrowRight.green</title><path class="a0997351-57ec-43e1-9fc6-5db7df61efb5" d="M11,2.49H0v2H11V7l7-3.5L11,0Z"/></svg>
-
-                </button>
-            </div>
-        </form>
-    </div>
     </section>
 <section class="statement applySpace--bottom applySpace--top fadeUp">
-    We use the rigorous study of mathematics as a vehicle to develop our students’ math fluency, intellect, and character, empowering them for life.
+    {{page.main_heading_2}}
 </section>
 <section class="programs applySpace--bottom  programs--cap-to-grid-width  fadeUp">
     <header class="programsHeader">
-        <h2>Our Programs</h2>
+        <h2>{{page.our_program_heading}}</h2>
                     <div class="programsHeaderText">
-                <p>With multiple levels for every grade as well as a selective competitions program, we are able to best serve each child’s development based on his or her knowledge and ability. </p>
+                <p>{{page.our_program_description}}</p>
             </div>
             </header>
 
@@ -333,115 +302,54 @@
             <a href="#" class="testimonialsMediaPlayTrigger" aria-label="Play Testimonial Media"></a>
         </div>
     </div>
+
     <div class="testimonialItems">
         <div class="testimonialCarousel">
-                    <div class="testimonialCarouselItem">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36 30"><defs aria-hidden='true'><style>.ba40f5b0-c09f-47b6-b51e-b3dacaaddaa0{fill:#fff;fill-rule:evenodd;}.b0e12826-421b-4fd9-a189-f0877141f43e{mask:url(#fb3cf855-09f4-4bf7-80e8-4e5e5e8d30d5);}.f33eae92-217a-46c5-b62f-94b22a3ef6e6{fill:#8bc540;}</style><mask id="fb3cf855-09f4-4bf7-80e8-4e5e5e8d30d5" x="0" y="0" width="36" height="30" maskUnits="userSpaceOnUse"><g id="a47e9389-e678-40a8-84ff-79cc14ff450c" data-name="mask-2"><path id="e862c1cd-00c8-4ad3-b644-30165619e870" data-name="path-1" class="ba40f5b0-c09f-47b6-b51e-b3dacaaddaa0" d="M0,30V16.77c0-5.25,1.59-9,4.28-11.72A17.84,17.84,0,0,1,15.12,0V5.86A9.7,9.7,0,0,0,8.06,15h6.76V30Zm20.88,0V16.77c0-5.25,1.6-9,4.28-11.72A17.86,17.86,0,0,1,36,0V5.86A9.7,9.7,0,0,0,28.94,15H35.7V30Z"/></g></mask></defs><title>icon.openQuote</title><g id="fd28fd7a-a6e5-446c-86a6-0d21a23e65d0" data-name="Stacked-Group"><g id="f37a34bf-9488-4e59-be45-0af9e1f620bd" data-name="Group"><g class="b0e12826-421b-4fd9-a189-f0877141f43e"><g id="e7d4b3f3-14f6-4f6b-91ad-9e2ebe259435" data-name="Rectangle"><rect class="f33eae92-217a-46c5-b62f-94b22a3ef6e6" width="36" height="30"/></g></g></g></g></svg>
+            
+            {% for review in page.review_set.all %}
+                
+                
+                <div class="testimonialCarouselItem">
+                    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36 30"><defs aria-hidden='true'><style>.ba40f5b0-c09f-47b6-b51e-b3dacaaddaa0{fill:#fff;fill-rule:evenodd;}.b0e12826-421b-4fd9-a189-f0877141f43e{mask:url(#fb3cf855-09f4-4bf7-80e8-4e5e5e8d30d5);}.f33eae92-217a-46c5-b62f-94b22a3ef6e6{fill:#8bc540;}</style><mask id="fb3cf855-09f4-4bf7-80e8-4e5e5e8d30d5" x="0" y="0" width="36" height="30" maskUnits="userSpaceOnUse"><g id="a47e9389-e678-40a8-84ff-79cc14ff450c" data-name="mask-2"><path id="e862c1cd-00c8-4ad3-b644-30165619e870" data-name="path-1" class="ba40f5b0-c09f-47b6-b51e-b3dacaaddaa0" d="M0,30V16.77c0-5.25,1.59-9,4.28-11.72A17.84,17.84,0,0,1,15.12,0V5.86A9.7,9.7,0,0,0,8.06,15h6.76V30Zm20.88,0V16.77c0-5.25,1.6-9,4.28-11.72A17.86,17.86,0,0,1,36,0V5.86A9.7,9.7,0,0,0,28.94,15H35.7V30Z"/></g></mask></defs><title>icon.openQuote</title><g id="fd28fd7a-a6e5-446c-86a6-0d21a23e65d0" data-name="Stacked-Group"><g id="f37a34bf-9488-4e59-be45-0af9e1f620bd" data-name="Group"><g class="b0e12826-421b-4fd9-a189-f0877141f43e"><g id="e7d4b3f3-14f6-4f6b-91ad-9e2ebe259435" data-name="Rectangle"><rect class="f33eae92-217a-46c5-b62f-94b22a3ef6e6" width="36" height="30"/></g></g></g></g></svg>
 
-                <blockquote>
-                    RSM is &quot;one of the top 10 schools&quot; and its students &quot;some of the brightest young people in the world.&quot;
-                </blockquote>
-                <div class="testimonialCarouselItemQuoteBy">
-                    <div class="author">Johns Hopkins Center for Talented Youth</div>
-                    <div class="authorAssociatedLogo">
-                        <img data-src="{% static 'images/uploads/johnshopkins.1572038127_2x.png' %}" alt="The Johns Hopkins Logo" class="lazy">
+                    <blockquote>
+                        {{review.review_content}}
+                    </blockquote>
+                    <div class="testimonialCarouselItemQuoteBy">
+                        <div class="author">{{review.reviewer}} Center for Talented Youth</div>
                     </div>
                 </div>
-            </div>
-                    <div class="testimonialCarouselItem">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36 30"><defs aria-hidden='true'><style>.ba40f5b0-c09f-47b6-b51e-b3dacaaddaa0{fill:#fff;fill-rule:evenodd;}.b0e12826-421b-4fd9-a189-f0877141f43e{mask:url(#fb3cf855-09f4-4bf7-80e8-4e5e5e8d30d5);}.f33eae92-217a-46c5-b62f-94b22a3ef6e6{fill:#8bc540;}</style><mask id="fb3cf855-09f4-4bf7-80e8-4e5e5e8d30d5" x="0" y="0" width="36" height="30" maskUnits="userSpaceOnUse"><g id="a47e9389-e678-40a8-84ff-79cc14ff450c" data-name="mask-2"><path id="e862c1cd-00c8-4ad3-b644-30165619e870" data-name="path-1" class="ba40f5b0-c09f-47b6-b51e-b3dacaaddaa0" d="M0,30V16.77c0-5.25,1.59-9,4.28-11.72A17.84,17.84,0,0,1,15.12,0V5.86A9.7,9.7,0,0,0,8.06,15h6.76V30Zm20.88,0V16.77c0-5.25,1.6-9,4.28-11.72A17.86,17.86,0,0,1,36,0V5.86A9.7,9.7,0,0,0,28.94,15H35.7V30Z"/></g></mask></defs><title>icon.openQuote</title><g id="fd28fd7a-a6e5-446c-86a6-0d21a23e65d0" data-name="Stacked-Group"><g id="f37a34bf-9488-4e59-be45-0af9e1f620bd" data-name="Group"><g class="b0e12826-421b-4fd9-a189-f0877141f43e"><g id="e7d4b3f3-14f6-4f6b-91ad-9e2ebe259435" data-name="Rectangle"><rect class="f33eae92-217a-46c5-b62f-94b22a3ef6e6" width="36" height="30"/></g></g></g></g></svg>
-
-                <blockquote>
-                    Students are required to think their way through logic problems that can be resolved only with creative use of the math they’ve learned.
-                </blockquote>
-                <div class="testimonialCarouselItemQuoteBy">
-                    <div class="author">The Atlantic</div>
-                    <div class="authorAssociatedLogo">
-                        <img data-src="{% static 'images/uploads/theatlantic2.1572037857_2x.png' %}" alt="The Atlantic Logo" class="lazy">
-                    </div>
-                </div>
-            </div>
-                    <div class="testimonialCarouselItem">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36 30"><defs aria-hidden='true'><style>.ba40f5b0-c09f-47b6-b51e-b3dacaaddaa0{fill:#fff;fill-rule:evenodd;}.b0e12826-421b-4fd9-a189-f0877141f43e{mask:url(#fb3cf855-09f4-4bf7-80e8-4e5e5e8d30d5);}.f33eae92-217a-46c5-b62f-94b22a3ef6e6{fill:#8bc540;}</style><mask id="fb3cf855-09f4-4bf7-80e8-4e5e5e8d30d5" x="0" y="0" width="36" height="30" maskUnits="userSpaceOnUse"><g id="a47e9389-e678-40a8-84ff-79cc14ff450c" data-name="mask-2"><path id="e862c1cd-00c8-4ad3-b644-30165619e870" data-name="path-1" class="ba40f5b0-c09f-47b6-b51e-b3dacaaddaa0" d="M0,30V16.77c0-5.25,1.59-9,4.28-11.72A17.84,17.84,0,0,1,15.12,0V5.86A9.7,9.7,0,0,0,8.06,15h6.76V30Zm20.88,0V16.77c0-5.25,1.6-9,4.28-11.72A17.86,17.86,0,0,1,36,0V5.86A9.7,9.7,0,0,0,28.94,15H35.7V30Z"/></g></mask></defs><title>icon.openQuote</title><g id="fd28fd7a-a6e5-446c-86a6-0d21a23e65d0" data-name="Stacked-Group"><g id="f37a34bf-9488-4e59-be45-0af9e1f620bd" data-name="Group"><g class="b0e12826-421b-4fd9-a189-f0877141f43e"><g id="e7d4b3f3-14f6-4f6b-91ad-9e2ebe259435" data-name="Rectangle"><rect class="f33eae92-217a-46c5-b62f-94b22a3ef6e6" width="36" height="30"/></g></g></g></g></svg>
-
-                <blockquote>
-                    American Students Turning to &quot;Russian Math&quot; 
-                </blockquote>
-                <div class="testimonialCarouselItemQuoteBy">
-                    <div class="author">NPR&#039;s Here &amp; Now</div>
-                    <div class="authorAssociatedLogo">
-                        <img data-src="{% static 'images/uploads/npr.1572038361_2x.png' %}" alt="The NPR logo" class="lazy">
-                    </div>
-                </div>
-            </div>
-                    <div class="testimonialCarouselItem">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36 30"><defs aria-hidden='true'><style>.ba40f5b0-c09f-47b6-b51e-b3dacaaddaa0{fill:#fff;fill-rule:evenodd;}.b0e12826-421b-4fd9-a189-f0877141f43e{mask:url(#fb3cf855-09f4-4bf7-80e8-4e5e5e8d30d5);}.f33eae92-217a-46c5-b62f-94b22a3ef6e6{fill:#8bc540;}</style><mask id="fb3cf855-09f4-4bf7-80e8-4e5e5e8d30d5" x="0" y="0" width="36" height="30" maskUnits="userSpaceOnUse"><g id="a47e9389-e678-40a8-84ff-79cc14ff450c" data-name="mask-2"><path id="e862c1cd-00c8-4ad3-b644-30165619e870" data-name="path-1" class="ba40f5b0-c09f-47b6-b51e-b3dacaaddaa0" d="M0,30V16.77c0-5.25,1.59-9,4.28-11.72A17.84,17.84,0,0,1,15.12,0V5.86A9.7,9.7,0,0,0,8.06,15h6.76V30Zm20.88,0V16.77c0-5.25,1.6-9,4.28-11.72A17.86,17.86,0,0,1,36,0V5.86A9.7,9.7,0,0,0,28.94,15H35.7V30Z"/></g></mask></defs><title>icon.openQuote</title><g id="fd28fd7a-a6e5-446c-86a6-0d21a23e65d0" data-name="Stacked-Group"><g id="f37a34bf-9488-4e59-be45-0af9e1f620bd" data-name="Group"><g class="b0e12826-421b-4fd9-a189-f0877141f43e"><g id="e7d4b3f3-14f6-4f6b-91ad-9e2ebe259435" data-name="Rectangle"><rect class="f33eae92-217a-46c5-b62f-94b22a3ef6e6" width="36" height="30"/></g></g></g></g></svg>
-
-                <blockquote>
-                    The idea is that students are capable of understanding complex mathematical concepts, making kids stretch their brains. 
-                </blockquote>
-                <div class="testimonialCarouselItemQuoteBy">
-                    <div class="author">The Boston Globe</div>
-                    <div class="authorAssociatedLogo">
-                        <img data-src="{% static 'images/uploads/bostonglobe2.1572039022_2x.png' %}" alt="The Boston Globe Logo" class="lazy">
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+                
                 </div>
         <nav class="testimonialCarouselNav">
-                    <a href="#" class="testimonialCarouselNavItem  is-current ">Johns Hopkins</a>
-                    <a href="#" class="testimonialCarouselNavItem ">The Atlantic</a>
-                    <a href="#" class="testimonialCarouselNavItem ">NPR</a>
-                    <a href="#" class="testimonialCarouselNavItem ">The Boston Globe</a>
-                </nav>
+            {% for review in page.review_set.all %}
+                <a href="#" class="testimonialCarouselNavItem {% if forloop.first %}is-current{% endif %}">{{review.reviewer}}</a>
+            {% endfor %}
+        </nav>
     </div>
 </section>
 <div class="">
     <section class="results applySpace--bottom fadeUp">
         <header class="resultsHeader">
-            <h2>Our Results</h2>
+            <h2>{{page.our_result_heading}}</h2>
             <div class="resultsHeaderText">
-                <p>Our students post remarkable scores on math competitions, see higher grades in school, and build a lasting confidence in their math and learning abilities overall. </p>
+                <p>{{page.our_result_description}}</p>
             </div>
         </header>
         <div class="resultsItems">
             <div class="resultsItemsInner">
-                                <div class="resultItem">
-                        <div id="result-121642796-stat" class="resultItemStat">
-                            A+
-                        </div>
-                        <div id="result-121642796-text" class="resultItemStatDescripion">
-                            Our students experience soaring confidence and grades
-                        </div>
-                                            </div>
-                                <div class="resultItem">
-                        <div id="result-489677570-stat" class="resultItemStat">
-                            6th
-                        </div>
-                        <div id="result-489677570-text" class="resultItemStatDescripion">
-                            Team RSM places 6th out of 150 on the Harvard-MIT Math Tournament
-                        </div>
-                                            </div>
-                                <div class="resultItem">
-                        <div id="result-1875933000-stat" class="resultItemStat">
-                            4th
-                        </div>
-                        <div id="result-1875933000-text" class="resultItemStatDescripion">
-                            Every 4th RSM student who participated scored in the top 5% on the AMC8!
-                        </div>
-                                            </div>
-                                <div class="resultItem">
-                        <div id="result-481212412-stat" class="resultItemStat">
-                            50k+
-                        </div>
-                        <div id="result-481212412-text" class="resultItemStatDescripion">
-                            RSM alumni go on to attend the best universities in the world
-                        </div>
-                            <a href="/blog/alumni.html" class="resultItemAction" aria-labelledby="result-481212412-stat result-481212412-text">
-                                Read More
-                            </a>
-                                            </div>
-                            </div>
+                {% for result in page.result_set.all %}
+                <div class="resultItem">
+                    <div id="result-121642796-stat" class="resultItemStat">
+                        A+
+                    </div>
+                    <div id="result-121642796-text" class="resultItemStatDescripion">
+                        Our students experience soaring confidence and grades
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
         <div class="viewAll">
             <!-- TODO: hook up link to results category of blog -->

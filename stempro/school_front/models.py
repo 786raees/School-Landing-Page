@@ -13,9 +13,11 @@ class IndexPage(models.Model):
     rsm_phone = models.CharField(_("Phone No"), max_length=50, default="(617) 362 3500")
     rsm_link = models.URLField(_("Link"), max_length=50, default="online.elementary@russianschool.com")
     # section 3
+    main_heading_2 = models.CharField(_("Main Heading 2"), max_length=500, default="We use the rigorous study of mathematics as a vehicle to develop our students’ math fluency, intellect, and character, empowering them for life.")
+    # section 4
     our_program_heading = models.CharField(_("Header"), max_length=50, default="Our Programs")
     our_program_description = models.TextField(_("Description"), default="""With multiple levels for every grade as well as a selective competitions program, we are able to best serve each child’s development based on his or her knowledge and ability.""")
-    # section 4
+    # section 5
     our_result_heading = models.CharField(_("Header"), max_length=50, default="Our Results")
     our_result_description = models.TextField(_("Description"), default="""Our students post remarkable scores on math competitions, see higher grades in school, and build a lasting confidence in their math and learning abilities overall.""")
 

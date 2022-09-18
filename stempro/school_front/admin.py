@@ -1,3 +1,23 @@
 from django.contrib import admin
+from .models import IndexPage, Result, Review
 
-# Register your models here.
+class ReviewInllineAdmin(admin.TabularInline):
+    model = Review
+    extra = 0
+    fields = ("review_content", "reviewer")
+
+class ResultInllineAdmin(admin.TabularInline):
+    model = Result
+    extra = 0
+    fields = ("result_heading","description")
+
+
+@admin.register(IndexPage)
+class IndexPageAdmin(admin.ModelAdmin):
+    '''Admin View for IndexPage'''
+
+    list_display = ('main_heading','rsm_phone')
+    inlines = [
+        ResultInllineAdmin,
+        ReviewInllineAdmin,
+    ]

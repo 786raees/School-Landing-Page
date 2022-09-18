@@ -1,10 +1,17 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from .models import IndexPage
 # Create your views here.
 
 
 class IndexView(TemplateView):
     template_name = "school_front/index.html"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        page = IndexPage.objects.first()
+        context["page"] = page
+        return context
 
 def all_templates(request, template_name):
     template_name = f"school_front/{template_name}"
