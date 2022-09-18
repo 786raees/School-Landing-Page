@@ -39,4 +39,13 @@ class Review(models.Model):
         return f"{self.reviewer}"
     
 
-    
+
+class Program(models.Model):
+    name = models.CharField(_("Program Name"), max_length=150, default="Elementary (K-2)")
+    hero_image = models.ImageField(_("Hero Image"), upload_to='uploads', default="static/images/uploads/early-elementary-hero-2880x1428.1575476978_2x.jpg")
+
+    heading_1 = models.CharField(_("Main Heading"), max_length=150, default="Start Early. Learn Deeply.")
+    description_1 = models.TextField(_("Main Description"), default="Spark an early interest in mathematics and lay the groundwork for higher level reasoning.")
+
+    heading_2 = models.CharField(_("Sub Heading"), max_length=450, default="We nurture the natural flexibility and curiosity of young minds to spark an interest in math and lay the foundations of higher level reasoning and logical thinking.")
+    description_2 = models.TextField(_("Sub Description"), default="Young children are naturally curious, uninhibited, and can easily grasp very complex ideas. Our curriculum and methodology are built with this in mind. Our students learn to work with, and develop an appetite for, challenging mathematical concepts.")

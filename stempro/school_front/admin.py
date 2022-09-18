@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import IndexPage, Result, Review
+from .models import IndexPage, Program, Result, Review
 
 class ReviewInllineAdmin(admin.TabularInline):
     model = Review
@@ -21,3 +21,13 @@ class IndexPageAdmin(admin.ModelAdmin):
         ResultInllineAdmin,
         ReviewInllineAdmin,
     ]
+
+@admin.register(Program)
+class ProgramAdmin(admin.ModelAdmin):
+    '''Admin View for Program'''
+
+    list_display = ('heading_1',)
+    # inlines = [
+    #     ResultInllineAdmin,
+    #     ReviewInllineAdmin,
+    # ]
