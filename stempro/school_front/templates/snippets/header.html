@@ -32,7 +32,7 @@
                         <a href="/blog.html" class="navigationPrimaryItem">Blog</a>
                     </nav>
                     <nav class="navigationSecondary">
-                        <a href="{% url 'account_login' %}" class="navigationSecondaryItem" rel="noreferrer">
+                        <a href="/admin/" class="navigationSecondaryItem" rel="noreferrer">
                         {% if request.user.is_authenticated %}{{request.user.username}}{% else %}Login{% endif %}</a>
                     </nav>
                 </div>
